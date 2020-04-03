@@ -13,11 +13,11 @@ def create_app():
     app.config.from_object(config)
     CORS(app)
     app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RR'
-    '''
-    from routes import FileServer_Router
-    route_instance = FileServer_Router()
-    route_instance.init_app(app)
 
+    from routers import JudgeClient_Router
+    route_instance = JudgeClient_Router()
+    route_instance.init_app(app)
+    '''
     from storage import Storage
     storage_instance = Storage()
     storage_instance.init_app(app)
