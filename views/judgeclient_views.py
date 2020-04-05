@@ -1,4 +1,5 @@
 #-*- coding=utf-8 -*-
+#该文件处理对应的判题机的接口函数
 from flask import request, jsonify, current_app, stream_with_context, Response
 from flask_api import status
 import time
@@ -14,5 +15,5 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def api_software_info_view():
+def api_version_info_view():
     return jsonify({'software':'JudgeServer','version':'0.1'})

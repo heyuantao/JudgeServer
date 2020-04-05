@@ -14,8 +14,11 @@ def create_app():
     CORS(app)
     app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RR'
 
-    from routers import JudgeClient_Router
+    #初始化路由部分
+    from routers import JudgeClient_Router, WebClient_Router
     route_instance = JudgeClient_Router()
+    route_instance.init_app(app)
+    route_instance = WebClient_Router()
     route_instance.init_app(app)
     '''
     from storage import Storage
