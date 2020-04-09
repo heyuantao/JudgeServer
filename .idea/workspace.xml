@@ -37,7 +37,7 @@
       <recent name="D:\Projects\JudgeServer\routers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test_send_problem">
+  <component name="RunManager" selected="Flask server.JudgeServer">
     <configuration name="test_send_problem" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JudgeServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -126,7 +126,7 @@
       <updated>1585911765790</updated>
       <workItem from="1585911770105" duration="1860000" />
       <workItem from="1586047436714" duration="984000" />
-      <workItem from="1586404790366" duration="1361000" />
+      <workItem from="1586404790366" duration="3672000" />
     </task>
     <servers />
   </component>
@@ -141,29 +141,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586405760725">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586409731763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586405760725" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586405760725">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586409731763" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586409731763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586405760725" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586405760725">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586409731763" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586409731763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586405760725" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586405760725">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586409731763" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586409731763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586405760725" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586409731763" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1586405139487">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JudgeServer$JudgeServer.coverage" NAME="JudgeServer Coverage Results" MODIFIED="1586405206744" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JudgeServer$test_send_problem.coverage" NAME="test_send_problem Coverage Results" MODIFIED="1586405760715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
+    <SUITE FILE_PATH="coverage/JudgeServer$JudgeServer.coverage" NAME="JudgeServer Coverage Results" MODIFIED="1586409731756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JudgeServer$test_send_problem.coverage" NAME="test_send_problem Coverage Results" MODIFIED="1586409230847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
   </component>
 </project>
