@@ -14,6 +14,6 @@ class Route:
         def version_info():
             return api_version_info_view()
 
-        @app.route(ROUTER_PREFIX + '/version', methods=['GET', ])
-        def version_info():
-            return api_version_info_view()
+        #@app.route(ROUTER_PREFIX + '/api/', methods=['GET', ])
+        #def version_info():
+        #    return api_version_info_view()
