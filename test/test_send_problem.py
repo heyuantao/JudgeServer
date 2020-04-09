@@ -21,12 +21,16 @@ def test_case1():
     test_cases.append({'input':'2', 'output':'3'})
     problem['test_cases'] = test_cases
 
-    print(problem)
+    #print(problem)
+    print("Sending ...")
     print(json.dumps(problem))
     #requests.post(POST_URL,data=json.dumps(problem))
     headers = {'Content-Type': 'application/json'}
     res = requests.post(POST_URL,  headers=headers, data=json.dumps(problem))
+    print("")
+    print("Received ...")
     print(res.text)
+    print(res.status_code)
 
 if __name__=="__main__":
     test_case1()

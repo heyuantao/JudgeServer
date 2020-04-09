@@ -1,6 +1,7 @@
 /__pycache__
 /routers/__pycache__
 /views/__pycache__
+/db/__pycache__
 /utils/__pycache__
 /test/__pycache__
 /celerybeat.pid

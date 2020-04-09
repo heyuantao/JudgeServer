@@ -20,14 +20,16 @@ def create_app():
     route_instance.init_app(app)
     route_instance = WebClient_Router()
     route_instance.init_app(app)
+
+    from db import Database
+    redis_instance = Database()
+    redis_instance.init_app(app)
+
     '''
     from storage import Storage
     storage_instance = Storage()
     storage_instance.init_app(app)
 
-    from db import Database
-    redis_instance = Database()
-    redis_instance.init_app(app)
 
     #从gunicorn获得loglevel等级，并将其设置到app中
     gunicorn_logger = logging.getLogger("gunicorn.error")
