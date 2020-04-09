@@ -2,5 +2,6 @@
 /routers/__pycache__
 /views/__pycache__
 /utils/__pycache__
+/test/__pycache__
 /celerybeat.pid
 /celerybeat-schedule
