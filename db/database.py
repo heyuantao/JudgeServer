@@ -44,24 +44,41 @@ class Database:
         self.connection.set(self.problem_count_key, 1000)
 
     #将一个题目编号加入到等待列队中，这个操作发生在用户提交判题代码的时候
-    def _put_problem_id_into_unsolved_list(self,problem_id):
-        self.connection.lpush(self.unsolved_problem_list_prefix,problem_id)
+    def _put_problem_id_into_unsolved_list(self,problem_id_str):
+        self.connection.lpush(self.unsolved_problem_list_prefix,problem_id_str)
 
     #从队列中取出一个题目编号，并将之从队列中删除，这个操作发生在判题机开始判题的时候
     def _get_problem_id_from_unsolved_list(self):
         self.connection.rpop(self.unsolved_problem_list_prefix)
 
     #将一个题目编号加入到等待列队中，这个操作发生在判题机开始判题的时候
-    def _put_problem_id_into_solving_list(self,problem_id):
-        self.connection.lpush(self.solving_problem_list_prefix, problem_id)
+    def _put_problem_id_into_solving_list(self,problem_id_str):
+        self.connection.lpush(self.solving_problem_list_prefix, problem_id_str)
 
     #将一个题目从等待队列中移除，这个操作实在判题任务结束的时候发生
-    def _remove_problem_id_from_solving_list(self,problem_id):
-        self.connection.lrem(self.solving_problem_list_prefix, 0, problem_id)
+    def _remove_problem_id_from_solving_list(self,problem_id_str):
+        self.connection.lrem(self.solving_problem_list_prefix, 0, problem_id_str)
 
     #添加一个问题
-    def add_problem(self, problem_json):
-        problem_id = self.connection.incr(self.problem_count_key)
+    #流程为获得新的题目编号，然后将题目内容放在会过期的key:value中，将题目加入到等待队列中
+    #返回一个对象，内容为题目的编号和task的编号
+    def add_problem(self, problem_dict):
+        assert type(problem_dict) == dict
+
+        problem_id_str = str(self.connection.incr(self.problem_count_key))
+        secret = str(uuid4().hex)
+        problem_dict['task'] = secret
+        self.connection.set(problem_id_str,json.dumps(problem_dict))
+        #self.connection.expire(problem_id_str, json.dumps(problem_dict),timedelta(hours=2))
+        self._put_problem_id_into_solving_list(problem_id_str)
+        return {"problem_id":problem_id_str, "secret":secret}
+
+    def get_problem_status(self, problem_id_str, secret):
+        if self.connection.exists(problem_id_str):
+            pass
+            #if self.connection.l
+
+
 
 
 
