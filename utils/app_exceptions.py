@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+class AppException(Exception):
+    pass
 
-class MessageException(Exception):
+class QueueFullException(AppException):
+    pass
+
+class MessageException(AppException):
     pass
