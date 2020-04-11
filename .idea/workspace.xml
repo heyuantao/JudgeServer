@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/db/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/app_exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/app_exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/webeclient_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/webeclient_views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +23,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1a1n37IreUcSiw6QqiM2NR7NnlJ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -133,7 +134,8 @@
       <workItem from="1585911770105" duration="1860000" />
       <workItem from="1586047436714" duration="984000" />
       <workItem from="1586404790366" duration="8734000" />
-      <workItem from="1586526455205" duration="3266000" />
+      <workItem from="1586526455205" duration="3304000" />
+      <workItem from="1586603760234" duration="1985000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -142,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586527863682</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ok">
+      <created>1586529752012</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586529752012</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,17 +162,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="goto sleep" />
-    <option name="LAST_COMMIT_MESSAGE" value="goto sleep" />
+    <MESSAGE value="ok" />
+    <option name="LAST_COMMIT_MESSAGE" value="ok" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586405101079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586527862924">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586529751262">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586527862924" />
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586529751262" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586421112419">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -184,10 +194,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586527867902">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586529753677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586527867902" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586529753677" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

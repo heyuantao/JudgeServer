@@ -13,7 +13,7 @@ import traceback
 
 logger = logging.getLogger(__name__)
 
-#Redis在使用的时候不要持久化，防止出现数据不一致的场景
+#Please not presistent data
 @Singleton
 class Database:
     def __init__(self, host='127.0.0.1', port=6379 , db=0):
