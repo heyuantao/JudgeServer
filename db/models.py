@@ -35,25 +35,60 @@ The software store more informat in redis.
 }
 '''
 
+
 class ProblemRecored:
     def __init__(self):
         self.data = {}
         self.data['problem'] = {'code': '', 'lang': '', 'test_cases': [{'input': '', 'output': ''}, ], 'notify': ''}
         self.data['judge'] = {'problem_id': '', 'secret': '', 'status': ''}
-        self.data['result'] = {'status': 'OL', 'message': ''}
+        self.data['result'] = {'status': '', 'message': ''}
 
     def toString(self):
         return json.dumps(self.data)
 
+    def fromString(self,data_str):
+        self.data = json.loads(data_str)
+
     def updateProblem(self, problem_dict):
-        pass
+        assert type(problem_dict) == dict
+        self.data['problem']['code'] = problem_dict.get('code','')
+        self.data['problem']['lang'] = problem_dict.get('lang', '')
+        self.data['problem']['notify'] = problem_dict.get('notify', '')
+        new_test_cases=[]
+        for item in problem_dict.get('test_cases',[]):
+            new_test_cases.append({'input':item.get('input',''),'output':item.get('output','')})
+        self.data['problem']['test_cases'] = new_test_cases
 
     def updateJudge(self, judge_dict):
-        pass
+        assert type(judge_dict) == dict
+        self.data['judge']['problem_id'] = judge_dict.get('problem_id', '')
+        self.data['judge']['secret'] = judge_dict.get('secret', '')
+        self.data['judge']['status'] = judge_dict.get('status', '')
 
     def updateResult(self, result_dict):
-        pass
+        assert type(result_dict) == dict
+        self.data['result']['status'] = result_dict.get('status', '')
+        self.data['result']['message'] = result_dict.get('message', '')
 
 
+def test_case1():
+    problem = ProblemRecored()
+    print(problem.toString())
+    #problem_dict = {'code': '#include <stdio.h>\n int main(){ printf("\n"); }', 'lang': 'c', 'test_cases': [{'input': '1', 'output': '2'}, ], 'notify': 'http://localhost/ok'}
+    problem_dict = {'code': '#include <stdio.h>\n int main(){ printf("\n"); }', 'lang': 'c', 'test_cases': [{'input': '1', 'output': '2'}, ], 'notify1': 'http://localhost/ok'}
+    problem.updateProblem(problem_dict)
+    print(problem.toString())
 
+def test_case2():
+    problem = ProblemRecored()
+    problem_dict = {'code': '#include <stdio.h>\n int main(){ printf("\n"); }', 'lang': 'c', 'test_cases': [{'input': '1', 'output': '2'}, ], 'notify1': 'http://localhost/ok'}
+    problem.updateProblem(problem_dict)
+
+    otherProblem = ProblemRecored()
+    otherProblem.fromString(problem.toString())
+    print(otherProblem.toString())
+
+if __name__ == "__main__":
+    #test_case1()
+    test_case2()
 
