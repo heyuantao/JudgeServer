@@ -16,6 +16,8 @@ def test_case2():
     otherProblem = ProblemRecored()
     otherProblem.fromString(problem.toString())
     print(otherProblem.toString())
+    print(otherProblem.problem_judge_result_status_list)
+    print(otherProblem.problem_judge_status_list)
 
 if __name__ == "__main__":
     #test_case1()

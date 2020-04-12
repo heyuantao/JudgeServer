@@ -10,8 +10,16 @@ import logging
 import json
 import traceback
 
-
 logger = logging.getLogger(__name__)
+
+
+class ProblemJudgeStatus(Enum):
+    waiting=0; judging=1; judged=2;
+
+
+class ProblemJudgeResultStatus(Enum):
+    WT0=0; WT1=1; CI=2; RI=3; AC=4; PE=5; WA=6; TL=7; ML=8; OL=9; RE=10; CE=11; CO=12; TR= 13;
+
 
 '''
 The web client will post data and this will be save in redis，then the problem is waiting tobe judged
@@ -39,8 +47,8 @@ The 'result' field is use by 'judge client'for store judge result and judge info
 '''
 
 class ProblemRecored:
-    problem_judge_status_list = ['waiting', 'judging', 'judged']
-    problem_judge_result_status_list = ['WT0','WT1','CI','RI','AC','PE','WA','TL','ML','OL','RE','CE','CE','TR']
+    problem_judge_status_list = [key for key in ProblemJudgeStatus.__members__]  #the judger status for problem
+    problem_judge_result_status_list = [key for key in ProblemJudgeResultStatus.__members__]  # Please reference with "OJCLIENT/Core/Judge.h" in OJCLIENT repo for judge_result_status_list
 
     def __init__(self):
         self.data = {}
@@ -66,6 +74,9 @@ class ProblemRecored:
 
     def updateJudge(self, judge_dict):
         assert type(judge_dict) == dict
+        if judge_dict.get('status') not in self.problem_judge_status_list:
+            raise MessageException('The status :{} is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
+
         self.data['judge']['problem_id'] = judge_dict.get('problem_id', '')
         self.data['judge']['secret'] = judge_dict.get('secret', '')
         self.data['judge']['status'] = judge_dict.get('status', '')
@@ -74,6 +85,12 @@ class ProblemRecored:
         assert type(result_dict) == dict
         self.data['result']['status'] = result_dict.get('status', '')
         self.data['result']['message'] = result_dict.get('message', '')
+
+    def getProblemJudgeResult(self):
+        return self.data['result']
+
+    def getProblemJudge(self):
+        return self.data['judge']
 
 
 
