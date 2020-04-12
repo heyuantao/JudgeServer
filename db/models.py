@@ -4,6 +4,7 @@ from utils.app_exceptions import QueueFullException, MessageException
 from uuid import uuid4
 from datetime import datetime,timedelta
 from config import config
+from enum import Enum
 import redis
 import logging
 import json
@@ -31,12 +32,16 @@ The software store more informat in redis.
 {
   'problem':{'code':'xxx','lang':'x','test_cases':[{'input':'xxx','output':'xxxx'},{'input':'xxx','output':'xxxx'}],'notify':'url to notify'},
   'judge'  :{'problem_id':'234234234','secret':'xdfsfsdfdsf','status':'waiting'},
-  'result' :{'status':'OL','message':''}
+  'result' :{'status':'','message':''}
 }
+The 'judge' field store the information for 'judge client' and the 'web client'. The 'status' is the field for 'judge client'.
+The 'result' field is use by 'judge client'for store judge result and judge information when error happen.
 '''
 
-
 class ProblemRecored:
+    problem_judge_status_list = ['waiting', 'judging', 'judged']
+    problem_judge_result_status_list = ['WT0','WT1','CI','RI','AC','PE','WA','TL','ML','OL','RE','CE','CE','TR']
+
     def __init__(self):
         self.data = {}
         self.data['problem'] = {'code': '', 'lang': '', 'test_cases': [{'input': '', 'output': ''}, ], 'notify': ''}
@@ -69,5 +74,6 @@ class ProblemRecored:
         assert type(result_dict) == dict
         self.data['result']['status'] = result_dict.get('status', '')
         self.data['result']['message'] = result_dict.get('message', '')
+
 
 
