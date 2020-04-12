@@ -87,7 +87,8 @@ class Database:
         problem_record.updateProblem(problem_dict)
         problem_record.updateJudge({'problem_id':problem_id_str,'secret':secret,'status':str(ProblemJudgeStatusEnum.waiting)})
 
-        self.connection.set(problem_id_str,problem_record.toString())        #暂时不设置超时时间
+        self.connection.set(problem_id_str,problem_record.toString())
+        self.connection.expire(problem_id_str,timedelta(hours=1))       #record will expire at 1 hour later
         self._put_problem_id_into_unsolved_queue(problem_id_str)
 
         return {"problem_id":problem_id_str, "secret":secret}
