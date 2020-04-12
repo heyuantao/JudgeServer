@@ -4,7 +4,7 @@ from flask import render_template, request, session, jsonify
 #from views.download_views import api_file_info_view, api_file_url_view, file_content_view
 from config import config
 #from views.judgeclient_views import api_version_info_view
-from views.webeclient_views import api_version_info_view, api_solution_create_view
+from views.webeclient_views import api_version_info_view, api_solution_create_view, api_solution_info_view
 
 ROUTER_PREFIX = config.App.ROUTE_PREFIX
 
@@ -18,10 +18,12 @@ class Route:
 
         #add a problem
         @app.route(ROUTER_PREFIX + '/api/v1/solution/', methods=['POST', ])
+        @auth.login_required
         def solution_create():
             return api_solution_create_view()
 
         #retrive solution judged info
         @app.route(ROUTER_PREFIX + '/api/v1/solution/info', methods=['POST', ])
+        @auth.login_required
         def solution_info():
             return api_solution_info_view()

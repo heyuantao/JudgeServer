@@ -54,6 +54,7 @@ class Database:
     def _get_problem_id_from_unsolved_queue(self):
         self.connection.srem(self.unsolved_problem_queue_key)
 
+
     #将一个题目编号加入到等待列队中，这个操作发生在判题机开始判题的时候
     def _put_problem_id_into_solving_queue(self,problem_id_str):
         self.connection.sadd(self.solving_problem_queue_key, problem_id_str)
@@ -62,14 +63,21 @@ class Database:
     def _remove_problem_id_from_solving_queue(self,problem_id_str):
         self.connection.srem(self.solving_problem_queue_key, problem_id_str)
 
-    #检查两个判题的队列是否是满的，如果是满的说明有大量任务待完成，可能是判题机出了问题，应拒绝提交
+    #Check if two queue is full,this problem my happen when judge client is not work or to many problem submit
     def _check_queue_is_full(self):
-        if self.connection.smembers(self.unsolved_problem_queue_key) == 1000:
+        if self.connection.smembers(self.unsolved_problem_queue_key) >= 1000:
+            logger.critical('Something went wrong, because unsolved_problem_queue is full !')
             return True
-        elif self.connection.smembers(self.solving_problem_queue_key) == 1000:
+        elif self.connection.smembers(self.solving_problem_queue_key) >= 1000:
+            logger.critical('Something went wrong, because solving_problem_queue is full !')
             return True
         else:
             return False
+
+    #problem will expire ,but problem is my store in two queue ,so delete is .This my happen when judge client is not inline
+    def _clear_queue_by_problem_id(self,problem_id_str):
+        self._get_problem_id_from_unsolved_queue(problem_id_str)
+        self._remove_problem_id_from_solving_queue(problem_id_str)
 
     #添加一个问题
     #流程为获得新的题目编号，然后将题目内容放在会过期的key:value中，将题目加入到等待队列中
@@ -109,6 +117,8 @@ class Database:
             else:
                 return problem_judge
         else:
+            self._clear_queue_by_problem_id(problem_id_str)
+            logger.error('Problem \"{}\" not exist , delete from waiting and judging queue !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
             #if self.connection.l
 

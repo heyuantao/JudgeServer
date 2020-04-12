@@ -2,7 +2,7 @@
 #该文件处理第三方客户端的接口函数,即从第三方客户端提交过来的题目和相应的测试数据，
 from flask import request, jsonify, current_app, stream_with_context, Response
 from flask_api import status
-from utils import MessageException
+from utils import MessageException, QueueFullException
 import time
 from werkzeug.urls import url_quote
 import urllib.parse
@@ -49,13 +49,27 @@ def api_solution_create_view():
         return jsonify(return_dict), status.HTTP_201_CREATED
     except MessageException as e:
         return jsonify({'status':'error','message':str(e)}), status.HTTP_400_BAD_REQUEST
+    except QueueFullException as e:
+        return jsonify({'status': 'error', 'message': str(e)}), status.HTTP_400_BAD_REQUEST
     except Exception as e:
         logger.critical('Unknow error happend in webclient_views.api_solution_create_view() !')
         logger.critical(traceback.format_exc())
         return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
 
 
-    #return jsonify({'solution': 1000, 'task':'32423xdsfwer'}), status.HTTP_201_CREATED
-
 def api_solution_info_view():
-    pass
+    try:
+        problem_id = request.json.get('problem_id')
+        secret = request.json.get('secret')
+        if problem_id == "":
+            raise MessageException('One input of testcase is empty !')
+        if secret == "":
+            raise MessageException('One input of testcase is empty !')
+        judged_result_dict = db.get_problem_status({'problem_id':problem_id,'secret':secret})
+        return jsonify(judged_result_dict), status.HTTP_200_OK
+    except MessageException as e:
+        return jsonify({'status':'error','message':str(e)}), status.HTTP_400_BAD_REQUEST
+    except Exception as e:
+        logger.critical('Unknow error happend in webclient_views.api_solution_info_view() !')
+        logger.critical(traceback.format_exc())
+        return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST

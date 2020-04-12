@@ -15,7 +15,7 @@ class AppConfig:
     SITE_URL = "http://127.0.0.1:5000"
     STATIC_FOLDER = ""  # not end with slash
     TEMPLATE_FOLDER = ""  # not end with slash
-    AUTH_TOKEN = ["UseMyAPIService",]  #可以设置多个token,可以设置并修改
+    AUTH_TOKENS = ["UseMyAPIService",]  #可以设置多个token,可以设置并修改
     CELERY_BACKEND = "redis://127.0.0.1:6379/1"
 
 @Singleton
@@ -26,7 +26,7 @@ class Config:
     def __init__(self):
         default_token_list = ["UseMyAPIService"]
         for token_item in default_token_list:
-            if token_item in self.App.AUTH_TOKEN:
+            if token_item in self.App.AUTH_TOKENS:
                 logger.critical("The default auth token \"{}\" is using .This may cause secure problem !".format(token_item))
 
 
