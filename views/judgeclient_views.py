@@ -15,5 +15,15 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def api_version_info_view():
-    return jsonify({'software':'JudgeServer','version':'0.1'})
+def api_get_jobs_view():
+    try:
+        pending = request.form.get('getpending')
+        lang_set = request.form.get('oj_lang_set')
+        max_running = request.form.get('max_running')
+
+        #more work need tobe finished !
+    except Exception as e:
+        logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
+        logger.critical(traceback.format_exc())
+        return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
+

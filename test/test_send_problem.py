@@ -3,7 +3,8 @@ import os
 import requests
 import json
 
-POST_URL = 'http://127.0.0.1:5000/api/v1/solution/'
+POST_URL = 'http://127.0.0.1:5000/api/v1/webclient/solution/'
+TOKEN_VALUE = 'UseMyAPIService'
 
 def test_case1():
     print("Run test case1 ！")
@@ -25,7 +26,7 @@ def test_case1():
     print("Sending ...")
     print(json.dumps(problem))
     #requests.post(POST_URL,data=json.dumps(problem))
-    headers = {'Content-Type': 'application/json'}
+    headers = {'Content-Type': 'application/json','Authorization':'Token '+TOKEN_VALUE}
     res = requests.post(POST_URL,  headers=headers, data=json.dumps(problem))
     print("")
     print("Received ...")

@@ -22,15 +22,13 @@ class Database:
         self.port = port
         self.db = db
 
-        #定义各种列队的别名
-        self.unsolved_problem_queue_key = "unsolved_queue"  # 用户上传但未处理的题目，存放编号
-        self.solving_problem_queue_key  = "solving_queue"   # 用户上传正在处理的，存放编号
-        #self.solved_problem_queue_prefix   = "solved_list:"    # 用户上传后已经解决的题目，存放编号
+        #the two queue use in judge
+        self.unsolved_problem_queue_key = "unsolved_queue"  # this queue store the problem id which is waiting for judge
+        self.solving_problem_queue_key  = "solving_queue"   # this queue store the problem is which is judging
 
-        #定义问题编号，使用自增的方式,在一开始初始化为1000
+        #this is the problem id,when user submit a task , add one to it
         self.problem_count_key = "count"
 
-        #定义题目存入的
         try:
             logger.debug("Connect to redis ... in Database.__init__()")
             self.connection_pool = redis.ConnectionPool(host=self.host, port=self.port, db=self.db, decode_responses=True) #password
@@ -40,35 +38,36 @@ class Database:
             logger.error(msg_str)
             raise MessageException(msg_str)
 
-    #flask 初始化调用该函数
+    #flask init this modules
     def init_app(self,app=None):
         logger.debug("Init database in Database.__init__()")
         logger.debug("Set the begin problem is to 100 !")
-        self.connection.set(self.problem_count_key, 1000)
+        if not self.connection.exists(self.problem_count_key):  #keep the value if this server restart
+            self.connection.set(self.problem_count_key, 1000)
 
-    #将一个题目编号加入到等待列队中，这个操作发生在用户提交判题代码的时候
+    #put a problem_id into unsolved_problem_queue,this function is called when a webclient submit a solution
     def _put_problem_id_into_unsolved_queue(self,problem_id_str):
         self.connection.sadd(self.unsolved_problem_queue_key,problem_id_str)
 
-    #从队列中取出一个题目编号，并将之从队列中删除，这个操作发生在判题机开始判题的时候
+    #get a problem_id from queue and remove it from queue. This function is call when a problem_id going to be judged
     def _get_problem_id_from_unsolved_queue(self):
         self.connection.srem(self.unsolved_problem_queue_key)
 
 
-    #将一个题目编号加入到等待列队中，这个操作发生在判题机开始判题的时候
+    #add a problem_id into sloving queue. this function is called when a problem_id is judging
     def _put_problem_id_into_solving_queue(self,problem_id_str):
         self.connection.sadd(self.solving_problem_queue_key, problem_id_str)
 
-    #将一个题目从等待队列中移除，这个操作实在判题任务结束的时候发生
+    #remove a problem_id from sloving queue .this function is called when judge is finished
     def _remove_problem_id_from_solving_queue(self,problem_id_str):
         self.connection.srem(self.solving_problem_queue_key, problem_id_str)
 
     #Check if two queue is full,this problem my happen when judge client is not work or to many problem submit
     def _check_queue_is_full(self):
-        if self.connection.smembers(self.unsolved_problem_queue_key) >= 1000:
+        if self.connection.scard(self.unsolved_problem_queue_key) >= 1000:
             logger.critical('Something went wrong, because unsolved_problem_queue is full !')
             return True
-        elif self.connection.smembers(self.solving_problem_queue_key) >= 1000:
+        elif self.connection.scard(self.solving_problem_queue_key) >= 1000:
             logger.critical('Something went wrong, because solving_problem_queue is full !')
             return True
         else:
@@ -79,7 +78,7 @@ class Database:
         self._get_problem_id_from_unsolved_queue(problem_id_str)
         self._remove_problem_id_from_solving_queue(problem_id_str)
 
-    #添加一个问题
+    #save a problem into redis
     #流程为获得新的题目编号，然后将题目内容放在会过期的key:value中，将题目加入到等待队列中
     #返回一个对象，内容为题目的编号和task的编号
     def add_problem(self, problem_dict):
@@ -96,12 +95,12 @@ class Database:
         problem_record.updateJudge({'problem_id':problem_id_str,'secret':secret,'status':str(ProblemJudgeStatusEnum.waiting)})
 
         self.connection.set(problem_id_str,problem_record.toString())
-        self.connection.expire(problem_id_str,timedelta(hours=1))       #record will expire at 1 hour later
+        self.connection.expire(problem_id_str,timedelta(minutes=10))       #record will expire at 1 hour later
         self._put_problem_id_into_unsolved_queue(problem_id_str)
 
         return {"problem_id":problem_id_str, "secret":secret}
 
-    #客户端主动获得代码的执行状态
+    #web client use this to get the judge status of a given problem
     def get_problem_status(self, problem_id_str, secret):
         if self.connection.exists(problem_id_str):
             record_string_in_redis = self.get(problem_id_str)
@@ -120,7 +119,6 @@ class Database:
             self._clear_queue_by_problem_id(problem_id_str)
             logger.error('Problem \"{}\" not exist , delete from waiting and judging queue !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
-            #if self.connection.l
 
 
 

@@ -21,9 +21,9 @@ def create_app():
     #init router
     from routers import JudgeClient_Router, WebClient_Router
     route_instance = JudgeClient_Router()
-    route_instance.init_app(app)
+    route_instance.init_app(app,auth_instance.get_auth())
     route_instance = WebClient_Router()
-    route_instance.init_app(app)
+    route_instance.init_app(app,auth_instance.get_auth())
 
     from db import Database
     redis_instance = Database()

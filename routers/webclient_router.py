@@ -17,13 +17,13 @@ class Route:
 
 
         #add a problem
-        @app.route(ROUTER_PREFIX + '/api/v1/solution/', methods=['POST', ])
+        @app.route(ROUTER_PREFIX + '/api/v1/webclient/solution/', methods=['POST', ])
         @auth.login_required
         def solution_create():
             return api_solution_create_view()
 
         #retrive solution judged info
-        @app.route(ROUTER_PREFIX + '/api/v1/solution/info', methods=['POST', ])
+        @app.route(ROUTER_PREFIX + '/api/v1/webclient/solution/info', methods=['POST', ])
         @auth.login_required
         def solution_info():
             return api_solution_info_view()
