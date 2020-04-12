@@ -13,13 +13,20 @@ import traceback
 logger = logging.getLogger(__name__)
 
 
-class ProblemJudgeStatus(Enum):
+class ProblemJudgeStatusEnum(Enum):
     waiting=0; judging=1; judged=2;
 
+    @classmethod
+    def getKeyList(cls):
+        return [key for key in cls.__members__]
 
-class ProblemJudgeResultStatus(Enum):
+
+class ProblemJudgeResultStatusEnum(Enum):
     WT0=0; WT1=1; CI=2; RI=3; AC=4; PE=5; WA=6; TL=7; ML=8; OL=9; RE=10; CE=11; CO=12; TR= 13;
 
+    @classmethod
+    def getKeyList(cls):
+        return [key for key in cls.__members__]
 
 '''
 The web client will post data and this will be save in redis，then the problem is waiting tobe judged
@@ -47,8 +54,8 @@ The 'result' field is use by 'judge client'for store judge result and judge info
 '''
 
 class ProblemRecored:
-    problem_judge_status_list = [key for key in ProblemJudgeStatus.__members__]  #the judger status for problem
-    problem_judge_result_status_list = [key for key in ProblemJudgeResultStatus.__members__]  # Please reference with "OJCLIENT/Core/Judge.h" in OJCLIENT repo for judge_result_status_list
+    problem_judge_status_list = ProblemJudgeStatusEnum.getKeyList()  #the judger status for problem
+    problem_judge_result_status_list = ProblemJudgeResultStatusEnum.getKeyList() # Please reference with "OJCLIENT/Core/Judge.h" in OJCLIENT repo for judge_result_status_list
 
     def __init__(self):
         self.data = {}
@@ -75,7 +82,7 @@ class ProblemRecored:
     def updateJudge(self, judge_dict):
         assert type(judge_dict) == dict
         if judge_dict.get('status') not in self.problem_judge_status_list:
-            raise MessageException('The status :{} is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
+            raise MessageException('The status :\"{}\" is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
 
         self.data['judge']['problem_id'] = judge_dict.get('problem_id', '')
         self.data['judge']['secret'] = judge_dict.get('secret', '')
@@ -83,6 +90,9 @@ class ProblemRecored:
 
     def updateResult(self, result_dict):
         assert type(result_dict) == dict
+        if result_dict.get('status') not in self.problem_judge_result_status_list:
+            raise MessageException('The status :\"{}\" is not in self.problem_judge_result_status_list'.format(result_dict.get('status')))
+
         self.data['result']['status'] = result_dict.get('status', '')
         self.data['result']['message'] = result_dict.get('message', '')
 

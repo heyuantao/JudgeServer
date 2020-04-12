@@ -4,7 +4,6 @@
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +182,7 @@
       <workItem from="1586404790366" duration="8734000" />
       <workItem from="1586526455205" duration="3304000" />
       <workItem from="1586603760234" duration="5264000" />
-      <workItem from="1586662641164" duration="2886000" />
+      <workItem from="1586662641164" duration="4150000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -227,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586664891892</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="code">
+      <created>1586665943800</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586665943800</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,41 +249,42 @@
     <MESSAGE value="work ok" />
     <MESSAGE value="restructure" />
     <MESSAGE value="work" />
-    <option name="LAST_COMMIT_MESSAGE" value="work" />
+    <MESSAGE value="code" />
+    <option name="LAST_COMMIT_MESSAGE" value="code" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586405101079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586664890053">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586665943114">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586664890053" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1586665890482">
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586665943114" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586667269865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586665890482" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1586665890481">
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586667269865" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1586667269865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586665890481" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1586665890481">
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586667269865" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1586667269865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586665890481" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1586665890481">
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586667269865" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1586667269865">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586665890481" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586667269865" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1586405139487">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586664894600">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586665945545">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586664894600" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586665945545" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -285,7 +292,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/JudgeServer$JudgeServer.coverage" NAME="JudgeServer Coverage Results" MODIFIED="1586414024095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/JudgeServer$test.coverage" NAME="test Coverage Results" MODIFIED="1586665890454" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/JudgeServer$test.coverage" NAME="test Coverage Results" MODIFIED="1586667269857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/JudgeServer$test_send_problem.coverage" NAME="test_send_problem Coverage Results" MODIFIED="1586409230847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/JudgeServer$models.coverage" NAME="models Coverage Results" MODIFIED="1586611645672" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
   </component>
