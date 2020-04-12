@@ -4,8 +4,6 @@
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +182,7 @@
       <workItem from="1586404790366" duration="8734000" />
       <workItem from="1586526455205" duration="3304000" />
       <workItem from="1586603760234" duration="5264000" />
-      <workItem from="1586662641164" duration="5110000" />
+      <workItem from="1586662641164" duration="5813000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -242,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586667295084</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="have a rest">
+      <created>1586673351948</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586673351948</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,10 +272,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586667294364">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586673348883">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586667294364" />
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586673348883" />
     <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586673334906">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -291,10 +296,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586667296469">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586673355655">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586667296469" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586673355655" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

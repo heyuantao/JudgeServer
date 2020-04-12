@@ -2,6 +2,7 @@
 #from .redis import AppRedisClient
 from utils import Singleton
 from utils.app_exceptions import QueueFullException, MessageException
+from db.models import ProblemRecored,ProblemJudgeStatusEnum,ProblemJudgeResultStatusEnum
 from uuid import uuid4
 from datetime import datetime,timedelta
 from config import config
@@ -79,11 +80,14 @@ class Database:
         if self._check_queue_is_full():
             raise QueueFullException("One of queue is full !")
 
-
         problem_id_str = str(self.connection.incr(self.problem_count_key))
         secret = str(uuid4().hex)
 
-        self.connection.set(problem_id_str,json.dumps(problem_dict))        #暂时不设置超时时间
+        problem_record = ProblemRecored()
+        problem_record.updateProblem(problem_dict)
+        problem_record.updateJudge({'problem_id':problem_id_str,'secret':secret,'status':str(ProblemJudgeStatusEnum.waiting)})
+
+        self.connection.set(problem_id_str,problem_record.toString())        #暂时不设置超时时间
         self._put_problem_id_into_unsolved_queue(problem_id_str)
 
         return {"problem_id":problem_id_str, "secret":secret}
@@ -91,20 +95,18 @@ class Database:
     #客户端主动获得代码的执行状态
     def get_problem_status(self, problem_id_str, secret):
         if self.connection.exists(problem_id_str):
-            problem_dict = json.loads(self.get(problem_id_str))
-            problem_id_str = problem_dict["problem_id"]
-            problem_secret = problem_dict["secret"]
-            if secret!=problem_secret:
+            record_string_in_redis = self.get(problem_id_str)
+
+            problem_record = ProblemRecored()
+            problem_record.fromString(record_string_in_redis)
+            problem_judge = problem_record.getProblemJudge()
+
+            #problem_id_str = problem_judge["problem_id"]
+            problem_secret = problem_judge["secret"]
+            if secret != problem_secret:
                 raise MessageException('Secret not match with is problem !')
-            if self.connection.sismember(self.unsolved_problem_queue_key, problem_id_str):
-                problem_dict["judge_status"] = "waiting"
-                return problem_dict
-            elif self.connection.sismember(self.solving_problem_queue_key, problem_id_str):
-                problem_dict["judge_status"] = "judging"
-                return problem_dict
             else:
-                problem_dict["judge_status"] = "judged"
-                return problem_dict
+                return problem_judge
         else:
             raise MessageException('The problem is not exist !')
             #if self.connection.l
