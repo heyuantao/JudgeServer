@@ -3,7 +3,7 @@ import os
 import requests
 import json
 
-POST_URL = 'http://127.0.0.1:5000/api/v1/solutions/'
+POST_URL = 'http://127.0.0.1:5000/api/v1/solution/'
 
 def test_case1():
     print("Run test case1 ！")

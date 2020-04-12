@@ -57,4 +57,5 @@ def api_solution_create_view():
 
     #return jsonify({'solution': 1000, 'task':'32423xdsfwer'}), status.HTTP_201_CREATED
 
-#
+def api_solution_info_view():
+    pass

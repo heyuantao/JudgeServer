@@ -16,7 +16,12 @@ class Route:
             return api_version_info_view()
 
 
-        #用来添加一个要判定的题目，使用post方法
-        @app.route(ROUTER_PREFIX + '/api/v1/solutions/', methods=['POST', ])
-        def solutions():
+        #add a problem
+        @app.route(ROUTER_PREFIX + '/api/v1/solution/', methods=['POST', ])
+        def solution_create():
             return api_solution_create_view()
+
+        #retrive solution judged info
+        @app.route(ROUTER_PREFIX + '/api/v1/solution/info', methods=['POST', ])
+        def solution_info():
+            return api_solution_info_view()
