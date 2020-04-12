@@ -1,4 +1,5 @@
 from db.models import ProblemRecored
+from db.models import ProblemJudgeResultStatusEnum,ProblemJudgeStatusEnum
 
 def test_case1():
     problem = ProblemRecored()
@@ -19,6 +20,11 @@ def test_case2():
     print(otherProblem.problem_judge_result_status_list)
     print(otherProblem.problem_judge_status_list)
 
+def test_case3():
+    print(ProblemJudgeResultStatusEnum.AC)
+    print(ProblemJudgeStatusEnum.waiting)
+
 if __name__ == "__main__":
     #test_case1()
-    test_case2()
+    #test_case2()
+    test_case3()

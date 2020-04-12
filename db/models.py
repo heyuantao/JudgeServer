@@ -20,6 +20,13 @@ class ProblemJudgeStatusEnum(Enum):
     def getKeyList(cls):
         return [key for key in cls.__members__]
 
+    @classmethod
+    def getStringByKey(cls,value):
+        pass
+
+    def __str__(self):
+        return self.name
+
 
 class ProblemJudgeResultStatusEnum(Enum):
     WT0=0; WT1=1; CI=2; RI=3; AC=4; PE=5; WA=6; TL=7; ML=8; OL=9; RE=10; CE=11; CO=12; TR= 13;
@@ -27,6 +34,9 @@ class ProblemJudgeResultStatusEnum(Enum):
     @classmethod
     def getKeyList(cls):
         return [key for key in cls.__members__]
+
+    def __str__(self):
+        return self.name
 
 '''
 The web client will post data and this will be save in redis，then the problem is waiting tobe judged
@@ -81,7 +91,7 @@ class ProblemRecored:
 
     def updateJudge(self, judge_dict):
         assert type(judge_dict) == dict
-        if judge_dict.get('status') not in self.problem_judge_status_list:
+        if judge_dict.get('status','') not in self.problem_judge_status_list:
             raise MessageException('The status :\"{}\" is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
 
         self.data['judge']['problem_id'] = judge_dict.get('problem_id', '')
@@ -90,7 +100,7 @@ class ProblemRecored:
 
     def updateResult(self, result_dict):
         assert type(result_dict) == dict
-        if result_dict.get('status') not in self.problem_judge_result_status_list:
+        if result_dict.get('status','') not in self.problem_judge_result_status_list:
             raise MessageException('The status :\"{}\" is not in self.problem_judge_result_status_list'.format(result_dict.get('status')))
 
         self.data['result']['status'] = result_dict.get('status', '')

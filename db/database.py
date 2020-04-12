@@ -79,10 +79,9 @@ class Database:
         if self._check_queue_is_full():
             raise QueueFullException("One of queue is full !")
 
+
         problem_id_str = str(self.connection.incr(self.problem_count_key))
         secret = str(uuid4().hex)
-        problem_dict["problem_id"] = problem_id_str
-        problem_dict["secret"] = secret
 
         self.connection.set(problem_id_str,json.dumps(problem_dict))        #暂时不设置超时时间
         self._put_problem_id_into_unsolved_queue(problem_id_str)
