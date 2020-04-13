@@ -32,7 +32,6 @@ def api_test_judgeclient():
     try:
         print("run at this")
         print(request.form)
-        raise Exception("no")
         return jsonify({'status': 'success'})
     except Exception as e:
         logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
