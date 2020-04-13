@@ -30,6 +30,7 @@ def api_get_jobs_view():
 
 def api_test_judgeclient():
     try:
+        print("run at this")
         print(request.form)
         return jsonify({'status': 'success'})
     except Exception as e:

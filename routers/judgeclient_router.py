@@ -12,12 +12,12 @@ class Route:
     def init_app(self, app=None, auth=None):
 
         #Judge client post test
-        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/solution/', methods=['POST', ])
+        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/test/', methods=['POST', ])
         def test_judgeclient():
             return api_test_judgeclient()
 
         # add a problem
-        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/test/', methods=['POST', ])
+        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/solution/', methods=['POST', ])
         @auth.login_required
         def get_jobs():
             return api_get_jobs_view()
