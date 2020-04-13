@@ -27,3 +27,12 @@ def api_get_jobs_view():
         logger.critical(traceback.format_exc())
         return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
 
+
+def api_test_judgeclient():
+    try:
+        print(request.form)
+        return jsonify({'status': 'success'})
+    except Exception as e:
+        logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
+        logger.critical(traceback.format_exc())
+        return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
