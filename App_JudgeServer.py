@@ -49,5 +49,5 @@ WSGIRequestHandler.protocol_version = "HTTP/1.1"
 application = create_app()
 
 if __name__ == '__main__':
-    #logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.DEBUG)
     application.run(port=5001, host="0.0.0.0", debug=True)
