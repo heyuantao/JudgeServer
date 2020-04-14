@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/judgeclient_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/judgeclient_views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,7 @@
       <workItem from="1586693127222" duration="2735000" />
       <workItem from="1586788540084" duration="2980000" />
       <workItem from="1586827626720" duration="3117000" />
-      <workItem from="1586838502185" duration="2177000" />
+      <workItem from="1586838502185" duration="2787000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -373,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586830119796</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="continue with api for judge client">
+      <created>1586844976912</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1586844976912</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,17 +404,18 @@
     <MESSAGE value="ok" />
     <MESSAGE value="continue" />
     <MESSAGE value="have a rest" />
-    <option name="LAST_COMMIT_MESSAGE" value="have a rest" />
+    <MESSAGE value="continue with api for judge client" />
+    <option name="LAST_COMMIT_MESSAGE" value="continue with api for judge client" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586405101079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586830119155">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586844976293">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586830119155" />
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586844976293" />
     <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586701093506">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -429,10 +436,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586830121470">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586844978880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586830121470" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586844978880" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
