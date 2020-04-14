@@ -51,8 +51,7 @@ class Database:
 
     #get a problem_id from queue and remove it from queue. This function is call when a problem_id going to be judged
     def _get_problem_id_from_unsolved_queue(self):
-        self.connection.srem(self.unsolved_problem_queue_key)
-
+        return self.connection.spop(self.unsolved_problem_queue_key)
 
     #add a problem_id into sloving queue. this function is called when a problem_id is judging
     def _put_problem_id_into_solving_queue(self,problem_id_str):
@@ -60,7 +59,7 @@ class Database:
 
     #remove a problem_id from sloving queue .this function is called when judge is finished
     def _remove_problem_id_from_solving_queue(self,problem_id_str):
-        self.connection.srem(self.solving_problem_queue_key, problem_id_str)
+        return self.connection.srem(self.solving_problem_queue_key, problem_id_str)
 
     #Check if two queue is full,this problem my happen when judge client is not work or to many problem submit
     def _check_queue_is_full(self):
@@ -119,6 +118,18 @@ class Database:
             self._clear_queue_by_problem_id(problem_id_str)
             logger.error('Problem \"{}\" not exist , delete from waiting and judging queue !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
+
+
+    #fetch a problem for judger, lang_set_extension_list is not use
+    def get_problem_id_str_list_by_count(self, count=2, lang_set_extension_list=None):
+        problem_list = []
+        for i in range(count):
+            one_problem = str(self._get_problem_id_from_unsolved_queue())
+            if one_problem == None:
+                break
+            else:
+                problem_list.append(one_problem)
+        return problem_list
 
 
 

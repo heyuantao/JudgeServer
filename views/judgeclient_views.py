@@ -10,11 +10,12 @@ import re
 from datetime import datetime,timedelta
 import traceback
 from config import config
-#from db import Database
+from db import Database
 import logging
 
 logger = logging.getLogger(__name__)
 
+db = Database()
 
 def api_test_judgeclient():
     try:
@@ -75,7 +76,21 @@ def api_problem_judge_common_view():
 
 
 def _get_jobs_sub_view(request):
-    pass
+    lang_set_str = request.form.get('oj_lang_set', '')
+    max_running_str = request.form.get('max_running', '')
+    if lang_set_str=='' or max_running_str=='':
+        logger.error('lang_set or max_runing is empty in  judgeclient_views._get_jobs_sub_view() !')
+        return jsonify({'status': 'error', 'message': 'lang_set or max_runing is empty'}), status.HTTP_400_BAD_REQUEST
+    # now all the lang is support in judge client
+    lang_set_int_list = [int(lang) for lang in lang_set_str.split(',')]
+    max_runing_int = int(max_running_str)
+    problem_id_str_list = db.get_problem_id_str_list_by_count(count=max_runing_int)
+    #return problem id split by nextline
+    return_content = ''
+    for problem_id_str in problem_id_str_list:
+        return_content = return_content + problem_id_str + '\n'
+    return return_content,status.HTTP_200_OK
+
 
 def _update_solution_sub_view(request):
     pass
