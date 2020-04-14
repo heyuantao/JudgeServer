@@ -132,6 +132,10 @@ class Database:
         return problem_list
 
 
+    def get_lang_extension_by_problem_id(self,problem_id): ##to be continue
+        pass
 
+    def get_lang_id_by_extension(self,extension_str):     ##to be continue
+        pass
 
 

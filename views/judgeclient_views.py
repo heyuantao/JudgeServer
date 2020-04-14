@@ -102,7 +102,17 @@ def _get_solution_sub_view(request):
     pass
 
 def _get_solution_information_sub_view(request):
-    pass
+    solution_id_str = request.form.get('sid', '')
+    if solution_id_str == '':
+        logger.error('lang_set or max_runing is empty in  judgeclient_views._get_jobs_sub_view() !')
+        return jsonify({'status': 'error', 'message': 'lang_set or max_runing is empty'}), status.HTTP_400_BAD_REQUEST
+
+    return_content = ''
+    return_content = return_content + '{problem_id_str}\n'.format(problem_id_str=solution_id_str)
+    lang_extension_str = db.get_lang_extension_by_problem_id(solution_id_str)
+    return_content = return_content + '{user_id}\n'.format(user_id='judgeserver')
+    return_content = return_content + '{lang_id}\n'.format(lang_id=db.get_lang_id_by_extension(lang_extension_str))
+    return return_content,status.HTTP_200_OK
 
 def _get_problem_information_sub_view(request):
     pass
