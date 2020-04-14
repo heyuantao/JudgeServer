@@ -33,6 +33,9 @@ def api_test_judgeclient():
         return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
 
 
+
+
+
 def api_problem_judge_common_view():
     try:
         if request.form.get('getpending', '') == '1':
@@ -43,6 +46,24 @@ def api_problem_judge_common_view():
             _add_compile_error_information_sub_view(request)
         if request.form.get('getsolution', '') == '1':
             _get_solution_sub_view(request)
+        if request.form.get('getsolutioninfo', '') == '1':
+            _get_solution_information_sub_view(request)
+        if request.form.get('getprobleminfo', '') == '1':
+            _get_problem_information_sub_view(request)
+        if request.form.get('addreinfo', '') == '1':
+            _add_runing_error_information_sub_view(request)
+        if request.form.get('gettestdatalist', '') == '1':
+            _get_test_data_list_sub_view(request)
+        if request.form.get('gettestdata', '') == '1':
+            _get_test_data_sub_view(request)
+        if request.form.get('gettestdatadate', '') == '1':
+            _get_test_data_date_sub_view(request)
+        if request.form.get('updateproblem', '') == '1':
+            _update_problem_sub_view(request)
+        if request.form.get('updateuser', '') == '1':
+            _update_user_sub_view(request)
+        #if request.form.get('checklogin', '') == '1':
+        #     _check_login_sub_view(request)
 
         #more work need tobe finished !
     except ValueError as e:
@@ -66,3 +87,32 @@ def _add_compile_error_information_sub_view(request):
 
 def _get_solution_sub_view(request):
     pass
+
+def _get_solution_information_sub_view(request):
+    pass
+
+def _get_problem_information_sub_view(request):
+    pass
+
+def _add_runing_error_information_sub_view(request):
+    pass
+
+def _get_test_data_list_sub_view(request):
+    pass
+
+def _get_test_data_sub_view(request):
+    pass
+
+def _get_test_data_date_sub_view(request):
+    pass
+
+def _update_problem_sub_view(request):
+    pass
+
+def _update_user_sub_view(request):
+    pass
+
+
+
+
+
