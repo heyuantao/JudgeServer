@@ -15,18 +15,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def api_get_jobs_view():
-    try:
-        pending = request.form.get('getpending')
-        lang_set = request.form.get('oj_lang_set')
-        max_running = request.form.get('max_running')
-
-        #more work need tobe finished !
-    except Exception as e:
-        logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
-        logger.critical(traceback.format_exc())
-        return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
-
 
 def api_test_judgeclient():
     try:
@@ -43,3 +31,38 @@ def api_test_judgeclient():
         logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
         logger.critical(traceback.format_exc())
         return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
+
+
+def api_problem_judge_common_view():
+    try:
+        if request.form.get('getpending', '') == '1':
+            _get_jobs_sub_view(request)
+        if request.form.get('update_solution', '') == '1':
+            _update_solution_sub_view(request)
+        if request.form.get('addceinfo', '') == '1':
+            _add_compile_error_information_sub_view(request)
+        if request.form.get('getsolution', '') == '1':
+            _get_solution_sub_view(request)
+
+        #more work need tobe finished !
+    except ValueError as e:
+        logger.critical('Unknow method in judgeclient_views.api_problem_judge_common_view() !')
+        logger.critical(traceback.format_exc())
+        return jsonify({'status': 'error', 'message': 'Unknow method !'}), status.HTTP_400_BAD_REQUEST
+    except Exception as e:
+        logger.critical('Unknow error happend in judgeclient_views.api_problem_judge_common_view() !')
+        logger.critical(traceback.format_exc())
+        return jsonify({'status': 'error', 'message': 'Unknow error happend !'}), status.HTTP_400_BAD_REQUEST
+
+
+def _get_jobs_sub_view(request):
+    pass
+
+def _update_solution_sub_view(request):
+    pass
+
+def _add_compile_error_information_sub_view(request):
+    pass
+
+def _get_solution_sub_view(request):
+    pass

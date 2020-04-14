@@ -3,7 +3,7 @@
 from flask import render_template, request, session, jsonify
 #from views.download_views import api_file_info_view, api_file_url_view, file_content_view
 from config import config
-from views.judgeclient_views import api_get_jobs_view,api_test_judgeclient
+from views.judgeclient_views import api_problem_judge_common_view,api_test_judgeclient
 
 ROUTER_PREFIX = config.App.ROUTE_PREFIX
 
@@ -16,8 +16,8 @@ class Route:
         def test_judgeclient():
             return api_test_judgeclient()
 
-        # add a problem
-        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/solution/', methods=['POST', ])
+        # add a problem,this api mix many interface by post params
+        @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/problem_judge/', methods=['POST', ])
         @auth.login_required
         def get_jobs():
-            return api_get_jobs_view()
+            return api_problem_judge_common_view()
