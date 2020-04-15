@@ -29,20 +29,24 @@ def api_solution_create_view():
         code = request.json.get('code')
         lang = request.json.get('lang')
         test_cases = request.json.get('test_cases')
-        #notify = request.json.get('notify')
-        if code=="":
+        notify = request.json.get('notify')
+        if code == None:
             raise MessageException('Code is empty !')
-        if lang=="":
+        if lang == None:
             raise MessageException('Lang is empty !')
-        if test_cases=="":
+        if test_cases == None:
             raise MessageException('Test_cases is empty !')
         for one_case in test_cases:
-            input = one_case['input']
-            output = one_case['output']
-            if input=="":
-                raise MessageException('One input of testcase is empty !')
-            if output=="":
-                raise MessageException('One input of testcase is empty !')
+            try:
+                input = one_case['input']
+                output = one_case['output']
+                if input == None:
+                    raise MessageException('One input of testcase is empty !')
+                if output == None:
+                    raise MessageException('One input of testcase is empty !')
+            except KeyError:
+                raise MessageException('Test case key is incorrect !')
+
 
         #main logic
         return_dict = db.add_problem(request.json)
