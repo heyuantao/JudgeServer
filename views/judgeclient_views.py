@@ -23,10 +23,10 @@ def api_test_judgeclient():
         lang_set = request.form.get('oj_lang_set')
         max_running = request.form.get('max_running')
 
-        print("This is post value !")
-        print(pending)
-        print(lang_set)
-        print(max_running)
+        #print("This is post value !")
+        #print(pending)
+        #print(lang_set)
+        #print(max_running)
         return jsonify({'status': 'success'})
     except Exception as e:
         logger.critical('Unknow error happend in judgeclient_views.api_get_jobs_view() !')
