@@ -29,11 +29,11 @@ def create_app():
     redis_instance = Database()
     redis_instance.init_app(app)
 
-    redis_instance._put_problem_id_into_unsolved_queue('1000')
-    redis_instance._put_problem_id_into_unsolved_queue('1001')
-    for i in range(5):
-        output = redis_instance.get_problem()
-        print(output)
+    #redis_instance._put_problem_id_into_unsolved_queue('1000')
+    #redis_instance._put_problem_id_into_unsolved_queue('1001')
+    #for i in range(5):
+    #    output = redis_instance.get_problem()
+    #    print(output)
     '''
     from storage import Storage
     storage_instance = Storage()
