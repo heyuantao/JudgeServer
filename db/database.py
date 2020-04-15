@@ -132,10 +132,22 @@ class Database:
         return problem_list
 
 
-    def get_lang_extension_by_problem_id(self,problem_id): ##to be continue
-        pass
+    def get_lang_extension_by_problem_id(self,problem_id_str): ##to be continue
+        if self.connection.exists(problem_id_str):
+            record_string_in_redis = self.get(problem_id_str)
 
-    def get_lang_id_by_extension(self,extension_str):     ##to be continue
-        pass
+            problem_record = ProblemRecored()
+            problem_record.fromString(record_string_in_redis)
+            lang_extension_str = problem_record.getProblem()['lang']
+            return lang_extension_str
+            #return ProblemRecored.getLangExtensionNameById(int(problem_id))
+        else:
+            logger.critical('Problem \"{}\" not exist ! Error happen in Database.get_lang_extension_by_problem_id()'.format(problem_id_str))
+            raise MessageException('Problem not exist when get its extension !')
+            #clear_the_problem_in_queue()
+
+    def get_lang_id_by_by_problem_id(self,problem_id_str):     ##to be continue
+        lang_extension_str = self.get_lang_extension_by_problem_id(problem_id_str)
+        return ProblemRecored.getLangIdByExtensionName(lang_extension_str)
 
 

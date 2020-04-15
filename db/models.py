@@ -112,6 +112,9 @@ class ProblemRecored:
         self.data['result']['status'] = result_dict.get('status', '')
         self.data['result']['message'] = result_dict.get('message', '')
 
+    def getProblem(self):
+        return self.data['problem']
+
     def getProblemJudgeResult(self):
         return self.data['result']
 
@@ -120,7 +123,7 @@ class ProblemRecored:
 
 
     @classmethod
-    def getLangIdByExtensionName(cls,ext_str):#return -1 if this lang is not support
+    def getLangIdByExtensionName(cls,ext_str): #return -1 if this lang is not support
         assert type(ext_str) == str
         if ext_str not in cls.supported_lang_ext_list:
             return -1
