@@ -19,5 +19,5 @@ class Route:
         # add a problem,this api mix many interface by post params
         @app.route(ROUTER_PREFIX + '/api/v1/judgeclient/problem_judge/', methods=['POST', ])
         @auth.login_required
-        def get_jobs():
+        def problem_judge():
             return api_problem_judge_common_view()
