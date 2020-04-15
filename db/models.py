@@ -12,6 +12,10 @@ import traceback
 
 logger = logging.getLogger(__name__)
 
+LANG_EXTENSION_LIST = ["c", "cc", "pas", "java", "rb", "sh", "py", "php", "pl", "cs", "m", "bas", "scm","c","cc","lua","js","go" ];
+#the lang list,do not change it
+SUPPORTED_LANG_EXTENSION_LIST = ["c", "cc","java"]
+#the lang support by judgeserver
 
 class ProblemJudgeStatusEnum(Enum):
     waiting=0; judging=1; judged=2;
@@ -66,6 +70,8 @@ The 'result' field is use by 'judge client'for store judge result and judge info
 class ProblemRecored:
     problem_judge_status_list = ProblemJudgeStatusEnum.getKeyList()  #the judger status for problem
     problem_judge_result_status_list = ProblemJudgeResultStatusEnum.getKeyList() # Please reference with "OJCLIENT/Core/Judge.h" in OJCLIENT repo for judge_result_status_list
+    lang_ext_list = LANG_EXTENSION_LIST
+    supported_lang_ext_list = SUPPORTED_LANG_EXTENSION_LIST
 
     def __init__(self):
         self.data = {}
@@ -111,6 +117,24 @@ class ProblemRecored:
 
     def getProblemJudge(self):
         return self.data['judge']
+
+
+    @classmethod
+    def getLangIdByExtensionName(cls,ext_str):#return -1 if this lang is not support
+        assert type(ext_str) == str
+        if ext_str not in cls.supported_lang_ext_list:
+            return -1
+        ext_str_index = cls.lang_ext_list.inex(ext_str) if ext_str in cls.lang_ext_list else -1
+        return ext_str_index
+
+    @classmethod
+    def getLangExtensionNameById(cls,id):   #return '' if this lang is not support
+        assert type(id) == int
+        ext_str = cls.lang_ext_list[id] if id<len(cls.lang_ext_list) else ''
+        if ext_str not in cls.supported_lang_ext_list:
+            return ''
+        return ext_str
+
 
 
 

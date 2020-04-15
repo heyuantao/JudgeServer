@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/judgeclient_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/judgeclient_views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +192,9 @@
       <workItem from="1586838502185" duration="2787000" />
       <workItem from="1586845575127" duration="36000" />
       <workItem from="1586852076725" duration="9000" />
-      <workItem from="1586870078522" duration="3230000" />
+      <workItem from="1586870078522" duration="3269000" />
+      <workItem from="1586910862470" duration="126000" />
+      <workItem from="1586911937707" duration="1196000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -398,7 +399,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586872437509</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="continue">
+      <created>1586873340742</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1586873340742</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,46 +428,46 @@
     <MESSAGE value="debug" />
     <MESSAGE value="wrong" />
     <MESSAGE value="ok" />
-    <MESSAGE value="continue" />
     <MESSAGE value="have a rest" />
     <MESSAGE value="continue with api for judge client" />
     <MESSAGE value="change to html later" />
     <MESSAGE value="finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished" />
+    <MESSAGE value="continue" />
+    <option name="LAST_COMMIT_MESSAGE" value="continue" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586405101079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586872436778">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586873339928">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586872436778" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586871703609">
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586873339928" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586873351235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586871703609" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1586871703609">
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586873351235" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1586873351234">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586871703609" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1586871703609">
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586873351234" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1586873351234">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586871703609" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1586871703609">
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586873351234" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1586873351234">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586871703609" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586873351234" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1586405139487">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586872439112">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586873342218">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586872439112" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586873342218" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
