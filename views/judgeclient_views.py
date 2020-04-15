@@ -63,7 +63,7 @@ def api_problem_judge_common_view():
         elif request.form.get('checklogin', '') == '1':
             return _check_login_sub_view(request)
         else:
-            raise Exception(str(request))
+            #raise Exception(str(len(request.args)))
             logger.critical('Unsupport method in judgeclient_views.api_problem_judge_common_view() !')
             return jsonify({'status': 'error', 'message': 'Unknow method !'}), status.HTTP_400_BAD_REQUEST
     except ValueError as e:

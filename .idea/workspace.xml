@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/webclient_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/judgeclient_router.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/judgeclient_router.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/judgeclient_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/judgeclient_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/send_problem.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/views/judgeclient_views.py" beforeDir="false" afterPath="$PROJECT_DIR$/views/judgeclient_views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,7 +44,7 @@
       <recent name="D:\Projects\JudgeServer\routers" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.judgeclient_test (1)">
+  <component name="RunManager" selected="Flask server.JudgeServer">
     <configuration name="judgeclient_test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="JudgeServer" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -249,7 +246,7 @@
       <workItem from="1586911937707" duration="1908000" />
       <workItem from="1586933759744" duration="80000" />
       <workItem from="1586933937833" duration="3257000" />
-      <workItem from="1586940710411" duration="6424000" />
+      <workItem from="1586940710411" duration="7410000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -503,7 +500,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586947289889</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="pytest">
+      <created>1586948859475</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1586948859475</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -541,41 +545,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586948830644" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586947289240">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586948858571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586947289240" />
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586948816206">
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586948858571" />
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586949831604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586948816206" />
-    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1586948816206">
+    <state width="1877" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586949831604" />
+    <state width="1877" height="223" key="GridCell.Tab.0.center" timestamp="1586949831604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586948816206" />
-    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1586948816206">
+    <state width="1877" height="223" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586949831604" />
+    <state width="1877" height="223" key="GridCell.Tab.0.left" timestamp="1586949831604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586948816206" />
-    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1586948816206">
+    <state width="1877" height="223" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586949831604" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right" timestamp="1586949831604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586948816206" />
+    <state width="1877" height="223" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586949831604" />
     <state x="463" y="165" key="SettingsEditor" timestamp="1586405139487">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586947291415">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586948861025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586947291415" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586948861025" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586528817737" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/JudgeServer$JudgeServer.coverage" NAME="JudgeServer Coverage Results" MODIFIED="1586871703601" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/JudgeServer$JudgeServer.coverage" NAME="JudgeServer Coverage Results" MODIFIED="1586949831595" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/JudgeServer$judgeclient_test__1_.coverage" NAME="judgeclient_test (1) Coverage Results" MODIFIED="1586948816190" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />
     <SUITE FILE_PATH="coverage/JudgeServer$test.coverage" NAME="test Coverage Results" MODIFIED="1586673334898" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/JudgeServer$test_send_problem.coverage" NAME="test_send_problem Coverage Results" MODIFIED="1586409230847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/test" />

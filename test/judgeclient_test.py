@@ -8,7 +8,7 @@ import pytest
 sys.path.append('..')
 from App_JudgeServer import application
 
-POST_URL = '/api/v1/judgeclient/problem_judge/'
+POST_URL = '/api/v1/judgeclient/test/?getpending=2'
 TOKEN_VALUE = 'UseMyAPIService'
 
 
@@ -26,7 +26,7 @@ def test_get_jobs_sub_view(client):
     form_dict['max_running'] = '2'
 
     headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + TOKEN_VALUE}
-    response = client.post(POST_URL, data=form_dict,headers=headers)
+    response = client.post(POST_URL, data =form_dict, headers=headers)
 
     response_content = response.data.decode()
     print(response_content)
