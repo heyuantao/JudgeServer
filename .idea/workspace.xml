@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0286a5a2-a120-47d0-a695-edc2731a0336" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/judgeclient_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +102,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test_send_problem.py" />
+      <option name="SCRIPT_NAME" value="D:\projects\JudgeServer\test\send_problem.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -197,7 +197,7 @@
       <workItem from="1586910862470" duration="126000" />
       <workItem from="1586911937707" duration="1908000" />
       <workItem from="1586933759744" duration="80000" />
-      <workItem from="1586933937833" duration="835000" />
+      <workItem from="1586933937833" duration="2726000" />
     </task>
     <task id="LOCAL-00001" summary="goto sleep">
       <created>1586527863682</created>
@@ -416,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586913223766</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="have a rest">
+      <created>1586934852223</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1586934852223</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,23 +445,23 @@
     <MESSAGE value="debug" />
     <MESSAGE value="wrong" />
     <MESSAGE value="ok" />
-    <MESSAGE value="have a rest" />
     <MESSAGE value="continue with api for judge client" />
     <MESSAGE value="change to html later" />
     <MESSAGE value="finished" />
     <MESSAGE value="continue" />
     <MESSAGE value="finishe lang extension array function methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="finishe lang extension array function methods" />
+    <MESSAGE value="have a rest" />
+    <option name="LAST_COMMIT_MESSAGE" value="have a rest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586405101079">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586405101079" />
-    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586913223064">
+    <state x="572" y="116" key="CommitChangelistDialog2" timestamp="1586934851620">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586913223064" />
+    <state x="572" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586934851620" />
     <state width="1877" height="223" key="GridCell.Tab.0.bottom" timestamp="1586873351235">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -475,10 +482,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="463" y="165" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586405139487" />
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586913225601">
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2" timestamp="1586934853518">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586913225601" />
+    <state x="552" y="256" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586934853518" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586528817737">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
