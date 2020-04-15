@@ -13,6 +13,8 @@ from config import config
 from db import Database
 import logging
 
+from utils import MessageException
+
 logger = logging.getLogger(__name__)
 
 db = Database()
@@ -86,6 +88,8 @@ def _get_jobs_sub_view(request):
     lang_set_int_list = [int(lang) for lang in lang_set_str.split(',')]
     max_runing_int = int(max_running_str)
     problem_id_str_list = db.get_problem_id_str_list_by_count(count=max_runing_int)
+    #print(problem_id_str_list)
+    db.put_problem_id_str_list_into_sloving_queue(problem_id_str_list)
     #return problem id split by nextline
     return_content = ''
     for problem_id_str in problem_id_str_list:
@@ -103,20 +107,32 @@ def _get_solution_sub_view(request):
     pass
 
 def _get_solution_information_sub_view(request):
-    solution_id_str = request.form.get('sid', '')
-    if solution_id_str == '':
-        logger.error('lang_set or max_runing is empty in  judgeclient_views._get_jobs_sub_view() !')
-        return jsonify({'status': 'error', 'message': 'lang_set or max_runing is empty'}), status.HTTP_400_BAD_REQUEST
+    try:
+        solution_id_str = request.form.get('sid', '')
+        if solution_id_str == '':
+            logger.error('Solution id is empty in  judgeclient_views._get_solution_information_sub_view() !')
+            return jsonify({'status': 'error', 'message': 'Solution id is empty !'}), status.HTTP_400_BAD_REQUEST
 
-    return_content = ''
-    return_content = return_content + '{problem_id_str}\n'.format(problem_id_str=solution_id_str)
-    lang_extension_str = db.get_lang_extension_by_problem_id(solution_id_str)
-    return_content = return_content + '{user_id}\n'.format(user_id='judgeserver')
-    return_content = return_content + '{lang_id}\n'.format(lang_id=db.get_lang_id_by_extension(lang_extension_str))
-    return return_content,status.HTTP_200_OK
+        return_content = ''
+        return_content = return_content + '{problem_id_str}\n'.format(problem_id_str=solution_id_str)
+        #lang_extension_str = db.get_lang_extension_by_problem_id(solution_id_str)
+        return_content = return_content + '{user_id}\n'.format(user_id='judgeserver')
+        return_content = return_content + '{lang_id}\n'.format(lang_id=db.get_lang_id_by_by_problem_id(solution_id_str))
+        return return_content,status.HTTP_200_OK
+    except MessageException as e:
+        return "", status.HTTP_400_BAD_REQUEST
+
 
 def _get_problem_information_sub_view(request):
-    pass
+    try:
+        problem_id_str = request.form.get('pid', '')
+        if problem_id_str == '':
+            logger.error('Problem id is empty in  judgeclient_views._get_problem_information_sub_view() !')
+            return jsonify({'status': 'error', 'message': 'Problem id is empty !'}), status.HTTP_400_BAD_REQUEST
+
+
+    except MessageException as e:
+        return "", status.HTTP_400_BAD_REQUEST
 
 def _add_runing_error_information_sub_view(request):
     pass

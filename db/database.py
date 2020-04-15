@@ -47,7 +47,8 @@ class Database:
 
     #put a problem_id into unsolved_problem_queue,this function is called when a webclient submit a solution
     def _put_problem_id_into_unsolved_queue(self,problem_id_str):
-        self.connection.sadd(self.unsolved_problem_queue_key,problem_id_str)
+        if (problem_id_str != None) and (problem_id_str != ""):
+            self.connection.sadd(self.unsolved_problem_queue_key,problem_id_str)
 
     #get a problem_id from queue and remove it from queue. This function is call when a problem_id going to be judged
     def _get_problem_id_from_unsolved_queue(self):
@@ -55,7 +56,8 @@ class Database:
 
     #add a problem_id into sloving queue. this function is called when a problem_id is judging
     def _put_problem_id_into_solving_queue(self,problem_id_str):
-        self.connection.sadd(self.solving_problem_queue_key, problem_id_str)
+        if (problem_id_str != None) and (problem_id_str !=""):
+            self.connection.sadd(self.solving_problem_queue_key, problem_id_str)
 
     #remove a problem_id from sloving queue .this function is called when judge is finished
     def _remove_problem_id_from_solving_queue(self,problem_id_str):
@@ -99,6 +101,9 @@ class Database:
 
         return {"problem_id":problem_id_str, "secret":secret}
 
+    #获得题目的信息
+    #def get_problem
+
     #web client use this to get the judge status of a given problem
     def get_problem_status(self, problem_id_str, secret):
         if self.connection.exists(problem_id_str):
@@ -124,17 +129,26 @@ class Database:
     def get_problem_id_str_list_by_count(self, count=2, lang_set_extension_list=None):
         problem_list = []
         for i in range(count):
-            one_problem = str(self._get_problem_id_from_unsolved_queue())
+            one_problem = self._get_problem_id_from_unsolved_queue()
+            #print(one_problem)
             if one_problem == None:
                 break
             else:
-                problem_list.append(one_problem)
+                problem_list.append(str(one_problem))
+        print(problem_list)
         return problem_list
+
+    # add problem list into sloving queue
+    def put_problem_id_str_list_into_sloving_queue(self,problem_id_str_list):
+        assert type(problem_id_str_list) == list
+        for problem_id_str in problem_id_str_list:
+            self._put_problem_id_into_solving_queue(problem_id_str)
 
 
     def get_lang_extension_by_problem_id(self,problem_id_str): ##to be continue
+        #print("problem id:{}".format(problem_id_str))
         if self.connection.exists(problem_id_str):
-            record_string_in_redis = self.get(problem_id_str)
+            record_string_in_redis = self.connection.get(problem_id_str)
 
             problem_record = ProblemRecored()
             problem_record.fromString(record_string_in_redis)
@@ -147,6 +161,7 @@ class Database:
             #clear_the_problem_in_queue()
 
     def get_lang_id_by_by_problem_id(self,problem_id_str):     ##to be continue
+        #print("problem id:{}".format(problem_id_str))
         lang_extension_str = self.get_lang_extension_by_problem_id(problem_id_str)
         return ProblemRecored.getLangIdByExtensionName(lang_extension_str)
 

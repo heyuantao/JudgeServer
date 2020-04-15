@@ -127,7 +127,7 @@ class ProblemRecored:
         assert type(ext_str) == str
         if ext_str not in cls.supported_lang_ext_list:
             return -1
-        ext_str_index = cls.lang_ext_list.inex(ext_str) if ext_str in cls.lang_ext_list else -1
+        ext_str_index = cls.lang_ext_list.index(ext_str) if ext_str in cls.lang_ext_list else -1
         return ext_str_index
 
     @classmethod
