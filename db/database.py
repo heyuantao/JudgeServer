@@ -102,7 +102,7 @@ class Database:
     #web client use this to get the judge status of a given problem
     def get_problem_status(self, problem_id_str, secret):
         if self.connection.exists(problem_id_str):
-            record_string_in_redis = self.get(problem_id_str)
+            record_string_in_redis = self.connection.get(problem_id_str)
 
             problem_record = ProblemRecored()
             problem_record.fromString(record_string_in_redis)

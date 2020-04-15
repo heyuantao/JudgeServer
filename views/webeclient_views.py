@@ -65,7 +65,7 @@ def api_solution_info_view():
             raise MessageException('One input of testcase is empty !')
         if secret == "":
             raise MessageException('One input of testcase is empty !')
-        judged_result_dict = db.get_problem_status({'problem_id':problem_id,'secret':secret})
+        judged_result_dict = db.get_problem_status(problem_id, secret)
         return jsonify(judged_result_dict), status.HTTP_200_OK
     except MessageException as e:
         return jsonify({'status':'error','message':str(e)}), status.HTTP_400_BAD_REQUEST
