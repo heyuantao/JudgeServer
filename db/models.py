@@ -90,13 +90,13 @@ class ProblemRecored:
 
     def updateProblem(self, problem_dict):
         assert type(problem_dict) == dict
-        self.data['problem']['code'] = problem_dict.get('code','')
-        self.data['problem']['lang'] = problem_dict.get('lang', '')
-        self.data['problem']['notify'] = problem_dict.get('notify', '')
-        self.data['problem']['time_limit'] = problem_dict.get('time_limit', DEFAULT_TIME_LIMIT)
-        self.data['problem']['mem_limit'] = problem_dict.get('mem_limit', DEFAULT_MEMORY_LIMIT)
+        self.data['problem']['code'] = problem_dict.get('code',self.data['problem']['code'])
+        self.data['problem']['lang'] = problem_dict.get('lang', self.data['problem']['lang'])
+        self.data['problem']['notify'] = problem_dict.get('notify', self.data['problem']['notify'])
+        self.data['problem']['time_limit'] = problem_dict.get('time_limit', self.data['problem']['time_limit'])
+        self.data['problem']['mem_limit'] = problem_dict.get('mem_limit', self.data['problem']['mem_limit'])
         new_test_cases=[]
-        for item in problem_dict.get('test_cases',[]):
+        for item in problem_dict.get('test_cases',self.data['problem']['test_cases']):
             new_test_cases.append({'input':item.get('input',''),'output':item.get('output','')})
         self.data['problem']['test_cases'] = new_test_cases
 
@@ -105,17 +105,17 @@ class ProblemRecored:
         if judge_dict.get('status','') not in self.problem_judge_status_list:
             raise MessageException('The status :\"{}\" is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
 
-        self.data['judge']['problem_id'] = judge_dict.get('problem_id', '')
-        self.data['judge']['secret'] = judge_dict.get('secret', '')
-        self.data['judge']['status'] = judge_dict.get('status', '')
+        self.data['judge']['problem_id'] = judge_dict.get('problem_id', self.data['judge']['problem_id'])
+        self.data['judge']['secret'] = judge_dict.get('secret', self.data['judge']['secret'])
+        self.data['judge']['status'] = judge_dict.get('status', self.data['judge']['status'])
 
     def updateResult(self, result_dict):
         assert type(result_dict) == dict
         if result_dict.get('status','') not in self.problem_judge_result_status_list:
             raise MessageException('The status :\"{}\" is not in self.problem_judge_result_status_list'.format(result_dict.get('status')))
 
-        self.data['result']['status'] = result_dict.get('status', '')
-        self.data['result']['message'] = result_dict.get('message', '')
+        self.data['result']['status'] = result_dict.get('status', self.data['result']['status'])
+        self.data['result']['message'] = result_dict.get('message', self.data['result']['message'])
 
     def getProblem(self):
         return self.data['problem']

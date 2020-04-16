@@ -171,6 +171,21 @@ class Database:
             raise MessageException('The problem is not exist !')
 
 
+    def update_judge_status_by_problem_id(self, problem_id_str, judge_status):
+        if self.connection.exists(problem_id_str):
+            record_string_in_redis = self.connection.get(problem_id_str)
+
+            problem_record = ProblemRecored()
+            problem_record.fromString(record_string_in_redis)
+            new_judge_dict = {'status':judge_status}
+            problem_record.updateJudge(new_judge_dict)
+
+            self.connection.set(problem_id_str, problem_record.toString())
+            self.connection.expire(problem_id_str, timedelta(minutes=30))
+        else:
+            logger.error('Problem \"{}\" not exist when call judgeclient_view.update_judge_status_by_problem_id() !'.format(problem_id_str))
+            raise MessageException('The problem is not exist !')
+
     def get_result_dict_by_problem_id(self, problem_id_str):  #This function is call by judge client
         if self.connection.exists(problem_id_str):
             record_string_in_redis = self.connection.get(problem_id_str)
@@ -184,7 +199,7 @@ class Database:
             raise MessageException('The problem is not exist !')
 
 
-    def update_problem_result_status_by_problem_id(self, problem_id_str, result_status, result_message):
+    def update_result_status_by_problem_id(self, problem_id_str, result_status, result_message):
         if self.connection.exists(problem_id_str):
             record_string_in_redis = self.connection.get(problem_id_str)
 
@@ -196,7 +211,7 @@ class Database:
             self.connection.set(problem_id_str, problem_record.toString())
             self.connection.expire(problem_id_str, timedelta(minutes=30))
         else:
-            logger.error('Problem \"{}\" not exist when call judgeclient_view.get_result_dict_by_problem_id() !'.format(problem_id_str))
+            logger.error('Problem \"{}\" not exist when call judgeclient_view.update_result_status_by_problem_id() !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
     # -------------------Return ProblemRecord information by problem_id end-------------#
 

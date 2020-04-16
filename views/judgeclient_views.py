@@ -108,7 +108,7 @@ def _add_compile_error_information_sub_view(request):
             return "", status.HTTP_400_BAD_REQUEST
         problem_id_str = solution_id_str
         problem_result_status_str = str(ProblemJudgeResultStatusEnum.CE)
-        db.update_problem_result_status_by_problem_id(problem_id_str,problem_result_status_str,compile_error_information_str)
+        db.update_result_status_by_problem_id(problem_id_str, problem_result_status_str, compile_error_information_str)
         return "",status.HTTP_200_OK
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
@@ -154,7 +154,7 @@ def _add_runing_error_information_sub_view(request):
             return "", status.HTTP_400_BAD_REQUEST
         problem_id_str = solution_id_str
         problem_result_status_str = str(ProblemJudgeResultStatusEnum.RE)
-        db.update_problem_result_status_by_problem_id(problem_id_str,problem_result_status_str,run_error_information_str)
+        db.update_result_status_by_problem_id(problem_id_str, problem_result_status_str, run_error_information_str)
         return "",status.HTTP_200_OK
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
