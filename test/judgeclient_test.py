@@ -88,3 +88,17 @@ def test_get_solution_information_sub_view(client):
     assert response_content_list[0] == new_add_problem_id_str
     assert response_content_list[1] == "judgeserver"
     assert response_content_list[2] == "0"
+
+
+def test_get_problem_information_sub_view(client):
+    new_add_problem_id_str = add_problem(client, TOKEN_VALUE)
+
+    form_dict = {}
+    form_dict['getprobleminfo'] = '1'
+    form_dict['pid'] = new_add_problem_id_str
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + TOKEN_VALUE}
+    response = client.post('/api/v1/judgeclient/problem_judge/', data =form_dict, headers=headers, mimetype = "application/x-www-form-urlencoded")  #multipart/form-data also work
+    response_content = response.data.decode()
+    response_content_list = response_content.split()
+    print(response_content_list)
+    assert True==False

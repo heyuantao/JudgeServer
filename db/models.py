@@ -77,7 +77,7 @@ class ProblemRecored:
 
     def __init__(self):
         self.data = {}
-        self.data['problem'] = {'code': '', 'lang': '', 'notify': '', 'time_limit':DEFAULT_TIME_LIMIT, 'memory_limit':DEFAULT_MEMORY_LIMIT,\
+        self.data['problem'] = {'code': '', 'lang': '', 'notify': '', 'time_limit':DEFAULT_TIME_LIMIT, 'mem_limit':DEFAULT_MEMORY_LIMIT,\
                                 'test_cases': [{'input': '', 'output': ''}, ]}
         self.data['judge'] = {'problem_id': '', 'secret': '', 'status': ''}
         self.data['result'] = {'status': '', 'message': ''}
@@ -94,7 +94,7 @@ class ProblemRecored:
         self.data['problem']['lang'] = problem_dict.get('lang', '')
         self.data['problem']['notify'] = problem_dict.get('notify', '')
         self.data['problem']['time_limit'] = problem_dict.get('time_limit', DEFAULT_TIME_LIMIT)
-        self.data['problem']['memory_limit'] = problem_dict.get('memory_limit', DEFAULT_MEMORY_LIMIT)
+        self.data['problem']['mem_limit'] = problem_dict.get('mem_limit', DEFAULT_MEMORY_LIMIT)
         new_test_cases=[]
         for item in problem_dict.get('test_cases',[]):
             new_test_cases.append({'input':item.get('input',''),'output':item.get('output','')})

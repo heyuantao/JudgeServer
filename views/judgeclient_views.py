@@ -131,7 +131,11 @@ def _get_problem_information_sub_view(request):
             logger.error('Problem id is empty in  judgeclient_views._get_problem_information_sub_view() !')
             return jsonify({'status': 'error', 'message': 'Problem id is empty !'}), status.HTTP_400_BAD_REQUEST
 
-
+        problem_dict = db.get_problem_dict_by_problem_id(problem_id_str)
+        isspj_str="0"
+        return_content = '{time_limit}\n{mem_limit}\n{isspj}\n'.format(problem_dict['time_limit'],problem_dict['mem_limit'],isspj_str)
+        return return_content
+        return problem_dict,status.HTTP_200_OK
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
 

@@ -101,4 +101,5 @@ def test_api_solution_info_view(client):
 
     problem_id_str = response_content['judge']['problem_id']
     status = response_content['judge']['status']
+    assert response_content. __contains__('problem') == False
     assert status=='waiting'

@@ -95,9 +95,11 @@ class Database:
 
 
 
-    # ---------------------Handle the operation for problem------------------------#
-    #Add a problem into redis and return the dict for problem : {"problem_id":problem_id_str, "secret":secret}
+    # ---------------------This method is user by webclient------------------------#
+
+
     def add_problem(self, problem_dict):
+        # Add a problem into redis and return the dict for problem : {"problem_id":problem_id_str, "secret":secret}
         assert type(problem_dict) == dict
 
         if self._check_queue_is_full():
@@ -118,7 +120,6 @@ class Database:
         return {"problem_id":problem_id_str, "secret":secret}
 
 
-
     def get_problem_judge_and_result_status(self, problem_id_str, secret):  #web client use this to get the judge status of a given problem
         if self.connection.exists(problem_id_str):
             record_string_in_redis = self.connection.get(problem_id_str)
@@ -137,6 +138,10 @@ class Database:
             self._remove_problem_from_queue_by_problem_id(problem_id_str)
             logger.error('Problem \"{}\" not exist , delete from waiting and judging queue !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
+
+
+    # ---------------------This method is user by webclient end-------------------#
+
 
     #-------------------Return ProblemRecord information by problem_id -----------------#
 
