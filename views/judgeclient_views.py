@@ -13,6 +13,7 @@ from config import config
 from db import Database
 import logging
 
+from db.models import ProblemJudgeResultStatusEnum
 from utils import MessageException
 
 logger = logging.getLogger(__name__)
@@ -90,10 +91,8 @@ def _get_jobs_sub_view(request):
     problem_id_str_list = db.get_problem_id_str_list_to_slove_by_count(count=max_runing_int)
 
     db.put_problem_id_str_list_into_sloving_queue(problem_id_str_list)
-    #return problem id split by nextline
-    return_content = ''
-    for problem_id_str in problem_id_str_list:
-        return_content = return_content + problem_id_str + '\n'
+
+    return_content = "\n".join(problem_id_str_list)
     return return_content,status.HTTP_200_OK
 
 
@@ -101,7 +100,18 @@ def _update_solution_sub_view(request):
     pass
 
 def _add_compile_error_information_sub_view(request):
-    pass
+    try:
+        solution_id_str = request.form.get('sid', '')
+        compile_error_information_str = request.form.get('ceinfo', '')
+        if solution_id_str == '':
+            logger.error('Solution id is empty in  judgeclient_views._add_runing_error_information_sub_view() !')
+            return "", status.HTTP_400_BAD_REQUEST
+        problem_id_str = solution_id_str
+        problem_result_status_str = str(ProblemJudgeResultStatusEnum.CE)
+        db.update_problem_result_status_by_problem_id(problem_id_str,problem_result_status_str,compile_error_information_str)
+        return "",status.HTTP_200_OK
+    except MessageException as e:
+        return "", status.HTTP_400_BAD_REQUEST
 
 def _get_solution_sub_view(request):
     pass
@@ -112,13 +122,10 @@ def _get_solution_information_sub_view(request):
         solution_id_str = request.form.get('sid', '')
         if solution_id_str == '':
             logger.error('Solution id is empty in  judgeclient_views._get_solution_information_sub_view() !')
-            return jsonify({'status': 'error', 'message': 'Solution id is empty !'}), status.HTTP_400_BAD_REQUEST
+            return "", status.HTTP_400_BAD_REQUEST
 
-        return_content = ''
-        return_content = return_content + '{problem_id_str}\n'.format(problem_id_str=solution_id_str)
-        #lang_extension_str = db.get_lang_extension_by_problem_id(solution_id_str)
-        return_content = return_content + '{user_id}\n'.format(user_id='judgeserver')
-        return_content = return_content + '{lang_id}\n'.format(lang_id=db.get_lang_id_by_by_problem_id(solution_id_str))
+        lang_id_str = db.get_lang_id_by_by_problem_id(solution_id_str)
+        return_content = '{probmel_id}\n{user_id}\n{lang_id}'.format(probmel_id=solution_id_str,user_id='judgeserver',lang_id=lang_id_str)
         return return_content,status.HTTP_200_OK
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
@@ -129,18 +136,28 @@ def _get_problem_information_sub_view(request):
         problem_id_str = request.form.get('pid', '')
         if problem_id_str == '':
             logger.error('Problem id is empty in  judgeclient_views._get_problem_information_sub_view() !')
-            return jsonify({'status': 'error', 'message': 'Problem id is empty !'}), status.HTTP_400_BAD_REQUEST
+            return "", status.HTTP_400_BAD_REQUEST
 
         problem_dict = db.get_problem_dict_by_problem_id(problem_id_str)
         isspj_str="0"
-        return_content = '{time_limit}\n{mem_limit}\n{isspj}\n'.format(problem_dict['time_limit'],problem_dict['mem_limit'],isspj_str)
-        return return_content
-        return problem_dict,status.HTTP_200_OK
+        return_content = '{time_limit}\n{mem_limit}\n{isspj}'.format(time_limit=problem_dict['time_limit'], mem_limit= problem_dict['mem_limit'], isspj=isspj_str)
+        return return_content, status.HTTP_200_OK
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
 
 def _add_runing_error_information_sub_view(request):
-    pass
+    try:
+        solution_id_str = request.form.get('sid', '')
+        run_error_information_str = request.form.get('reinfo', '')
+        if solution_id_str == '':
+            logger.error('Solution id is empty in  judgeclient_views._add_runing_error_information_sub_view() !')
+            return "", status.HTTP_400_BAD_REQUEST
+        problem_id_str = solution_id_str
+        problem_result_status_str = str(ProblemJudgeResultStatusEnum.RE)
+        db.update_problem_result_status_by_problem_id(problem_id_str,problem_result_status_str,run_error_information_str)
+        return "",status.HTTP_200_OK
+    except MessageException as e:
+        return "", status.HTTP_400_BAD_REQUEST
 
 def _get_test_data_list_sub_view(request):
     pass

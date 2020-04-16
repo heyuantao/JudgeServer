@@ -183,6 +183,21 @@ class Database:
             logger.error('Problem \"{}\" not exist when call judgeclient_view.get_result_dict_by_problem_id() !'.format(problem_id_str))
             raise MessageException('The problem is not exist !')
 
+
+    def update_problem_result_status_by_problem_id(self, problem_id_str, result_status, result_message):
+        if self.connection.exists(problem_id_str):
+            record_string_in_redis = self.connection.get(problem_id_str)
+
+            problem_record = ProblemRecored()
+            problem_record.fromString(record_string_in_redis)
+            new_result_dict = {'status':result_status,'message':result_message}
+            problem_record.updateResult(new_result_dict)
+
+            self.connection.set(problem_id_str, problem_record.toString())
+            self.connection.expire(problem_id_str, timedelta(minutes=30))
+        else:
+            logger.error('Problem \"{}\" not exist when call judgeclient_view.get_result_dict_by_problem_id() !'.format(problem_id_str))
+            raise MessageException('The problem is not exist !')
     # -------------------Return ProblemRecord information by problem_id end-------------#
 
     def get_problem_id_str_list_to_slove_by_count(self, count=2, lang_set_extension_list=None):  #fetch a problem for judger, lang_set_extension_list is not use

@@ -101,4 +101,31 @@ def test_get_problem_information_sub_view(client):
     response_content = response.data.decode()
     response_content_list = response_content.split()
     print(response_content_list)
-    assert True==False
+    response_content_list = response_content.split()
+    assert len(response_content_list)==3
+
+
+def test_add_runing_error_information_sub_view(client):
+    new_add_problem_id_str = add_problem(client, TOKEN_VALUE)
+
+    form_dict = {}
+    form_dict['addreinfo'] = '1'
+    form_dict['sid'] = new_add_problem_id_str
+    form_dict['reinfo'] = 'The memory run out !'
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + TOKEN_VALUE}
+    response = client.post('/api/v1/judgeclient/problem_judge/', data =form_dict, headers=headers, mimetype = "application/x-www-form-urlencoded")  #multipart/form-data also work
+    response_content = response.data.decode()
+    assert response_content==""
+
+
+def test_add_compile_error_information_sub_view(client):
+    new_add_problem_id_str = add_problem(client, TOKEN_VALUE)
+
+    form_dict = {}
+    form_dict['addceinfo'] = '1'
+    form_dict['sid'] = new_add_problem_id_str
+    form_dict['ceinfo'] = 'int define error'
+    headers = {'Content-Type': 'application/json', 'Authorization': 'Token ' + TOKEN_VALUE}
+    response = client.post('/api/v1/judgeclient/problem_judge/', data =form_dict, headers=headers, mimetype = "application/x-www-form-urlencoded")  #multipart/form-data also work
+    response_content = response.data.decode()
+    assert response_content==""
