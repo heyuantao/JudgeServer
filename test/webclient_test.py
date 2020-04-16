@@ -23,6 +23,7 @@ def test_api_version_info_view(client):
     print(response_content)
     assert '{"software":"JudgeServer","version":"0.1"}' in str(response_content)
 
+
 def test_api_solution_create_view(client):
     source_code_file_path = "./data/code1.c"
     source_code_file = open(source_code_file_path);
@@ -31,6 +32,7 @@ def test_api_solution_create_view(client):
     problem_dict['code'] = source_code_file_content
     problem_dict['lang'] = 'c'
     problem_dict['notify'] = ''
+
 
     test_cases = []
     test_cases.append({'input': '1', 'output': '2'})
@@ -97,6 +99,6 @@ def test_api_solution_info_view(client):
     response_content = response.get_json()
     print(response_content)
 
-    problem_id_str = response_content['problem_id']
-    status = response_content['status']
+    problem_id_str = response_content['judge']['problem_id']
+    status = response_content['judge']['status']
     assert status=='waiting'

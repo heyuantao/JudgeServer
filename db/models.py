@@ -16,6 +16,8 @@ LANG_EXTENSION_LIST = ["c", "cc", "pas", "java", "rb", "sh", "py", "php", "pl", 
 #the lang list,do not change it
 SUPPORTED_LANG_EXTENSION_LIST = ["c", "cc","java"]
 #the lang support by judgeserver
+DEFAULT_TIME_LIMIT   = '1'    #Second
+DEFAULT_MEMORY_LIMIT = '128'  #MB
 
 class ProblemJudgeStatusEnum(Enum):
     waiting=0; judging=1; judged=2;
@@ -75,7 +77,8 @@ class ProblemRecored:
 
     def __init__(self):
         self.data = {}
-        self.data['problem'] = {'code': '', 'lang': '', 'test_cases': [{'input': '', 'output': ''}, ], 'notify': ''}
+        self.data['problem'] = {'code': '', 'lang': '', 'notify': '', 'time_limit':DEFAULT_TIME_LIMIT, 'memory_limit':DEFAULT_MEMORY_LIMIT,\
+                                'test_cases': [{'input': '', 'output': ''}, ]}
         self.data['judge'] = {'problem_id': '', 'secret': '', 'status': ''}
         self.data['result'] = {'status': '', 'message': ''}
 
@@ -90,6 +93,8 @@ class ProblemRecored:
         self.data['problem']['code'] = problem_dict.get('code','')
         self.data['problem']['lang'] = problem_dict.get('lang', '')
         self.data['problem']['notify'] = problem_dict.get('notify', '')
+        self.data['problem']['time_limit'] = problem_dict.get('time_limit', DEFAULT_TIME_LIMIT)
+        self.data['problem']['memory_limit'] = problem_dict.get('memory_limit', DEFAULT_MEMORY_LIMIT)
         new_test_cases=[]
         for item in problem_dict.get('test_cases',[]):
             new_test_cases.append({'input':item.get('input',''),'output':item.get('output','')})
@@ -115,10 +120,10 @@ class ProblemRecored:
     def getProblem(self):
         return self.data['problem']
 
-    def getProblemJudgeResult(self):
+    def getJudgeResult(self):
         return self.data['result']
 
-    def getProblemJudge(self):
+    def getJudge(self):
         return self.data['judge']
 
 

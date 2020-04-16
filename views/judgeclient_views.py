@@ -87,8 +87,8 @@ def _get_jobs_sub_view(request):
     # now all the lang is support in judge client
     lang_set_int_list = [int(lang) for lang in lang_set_str.split(',')]
     max_runing_int = int(max_running_str)
-    problem_id_str_list = db.get_problem_id_str_list_by_count(count=max_runing_int)
-    #print(problem_id_str_list)
+    problem_id_str_list = db.get_problem_id_str_list_to_slove_by_count(count=max_runing_int)
+
     db.put_problem_id_str_list_into_sloving_queue(problem_id_str_list)
     #return problem id split by nextline
     return_content = ''
@@ -106,6 +106,7 @@ def _add_compile_error_information_sub_view(request):
 def _get_solution_sub_view(request):
     pass
 
+#get problem_id,user_id,lang_id by solubion_id
 def _get_solution_information_sub_view(request):
     try:
         solution_id_str = request.form.get('sid', '')
@@ -122,7 +123,7 @@ def _get_solution_information_sub_view(request):
     except MessageException as e:
         return "", status.HTTP_400_BAD_REQUEST
 
-
+#get time_limit,mem_limit,isspj information by problem
 def _get_problem_information_sub_view(request):
     try:
         problem_id_str = request.form.get('pid', '')

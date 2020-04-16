@@ -47,7 +47,6 @@ def api_solution_create_view():
             except KeyError:
                 raise MessageException('Test case key is incorrect !')
 
-
         #main logic
         return_dict = db.add_problem(request.json)
         return jsonify(return_dict), status.HTTP_201_CREATED
@@ -69,7 +68,8 @@ def api_solution_info_view():
             raise MessageException('One input of testcase is empty !')
         if secret == "":
             raise MessageException('One input of testcase is empty !')
-        judged_result_dict = db.get_problem_status(problem_id, secret)
+        judged_result_dict = db.get_problem_judge_and_result_status(problem_id, secret)
+
         return jsonify(judged_result_dict), status.HTTP_200_OK
     except MessageException as e:
         return jsonify({'status':'error','message':str(e)}), status.HTTP_400_BAD_REQUEST
