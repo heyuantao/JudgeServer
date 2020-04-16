@@ -232,7 +232,8 @@ class Database:
         assert type(problem_id_str_list) == list
         for problem_id_str in problem_id_str_list:
             self._put_problem_id_into_solving_queue(problem_id_str)
-            self.update_judge_status_by_problem_id(problem_id_str,{'status':str(ProblemJudgeStatusEnum.judging)})
+            judge_status_str = str(ProblemJudgeStatusEnum.judging)
+            self.update_judge_status_by_problem_id(problem_id_str,judge_status_str)
 
 
     def get_lang_extension_by_problem_id(self,problem_id_str): ##to be continue

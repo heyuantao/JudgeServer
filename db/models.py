@@ -103,6 +103,9 @@ class ProblemRecored:
     def updateJudge(self, judge_dict):
         assert type(judge_dict) == dict
         if judge_dict.get('status','') not in self.problem_judge_status_list:
+            print("###########")
+            print(judge_dict.get('status',''))
+            print(self.problem_judge_status_list)
             raise MessageException('The status :\"{}\" is not in self.problem_judge_status_list'.format(judge_dict.get('status')))
 
         self.data['judge']['problem_id'] = judge_dict.get('problem_id', self.data['judge']['problem_id'])

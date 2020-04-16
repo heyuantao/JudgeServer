@@ -34,7 +34,7 @@ def add_problem(client,token):
     return new_add_problem_id_str
 
 
-def test_get_jobs_sub_view(client):
+def test_api_test_judgeclient(client):
     form_dict = {}
     form_dict['getpending'] = '1'
     form_dict['oj_lang_set'] = '0,1,2,3'
